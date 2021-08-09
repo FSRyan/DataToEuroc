@@ -9,7 +9,7 @@
 std::ofstream fg;
 void imu_callback(const sensor_msgs::ImuConstPtr &imu_msg)
 {
-    long long int t = (imu_msg->header.stamp.toSec()-187602.0)*1e9;
+    long long int t = (imu_msg->header.stamp.toSec()-187602.0)*1e9; //直接获取的时间戳cam和IMU相差比较大，因此做个粗略的对齐，以免后面无法标定
 
     fg << t << "," << imu_msg->angular_velocity.x << "," << imu_msg->angular_velocity.y << "," << imu_msg->angular_velocity.z << "," << imu_msg->linear_acceleration.x << "," << imu_msg->linear_acceleration.y << "," << imu_msg->linear_acceleration.z << std::endl;
 
