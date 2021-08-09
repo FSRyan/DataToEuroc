@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.20)
+project(dteuroc)
+
+set(CMAKE_CXX_STANDARD 14)
+
+find_package(catkin REQUIRED COMPONENTS
+        roscpp
+        std_msgs
+        geometry_msgs
+        sensor_msgs
+        tf
+        cv_bridge
+        )
+
+include_directories(
+        ${catkin_INCLUDE_DIRS}
+        /usr/include/opencv2
+)
+
+add_executable(dteuroc dteuroc.cpp)
+target_link_libraries(dteuroc ${catkin_LIBRARIES})
